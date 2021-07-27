@@ -5,17 +5,13 @@
         I bought a used Yugo and I don't need a loan.
         Therefore, I didn't buy a new goat.
 */
-// ᴠ ᴧ ⌐ → ↔
 
 #include<stdio.h>
 #include<stdbool.h>
 bool ifThen(bool a, bool b){
-    if( b == 1)
-            return 1;
-        else if( a == 0 )
-            return 1;
-        else
-            return 0;
+    if( b == 1)             return 1;
+    else if( a == 0 )       return 1;
+    else                    return 0;
 }
 
 int main(){
@@ -37,22 +33,25 @@ int main(){
         -------------\n\
         ∴ ⌐p\n\n");
     
+    printf("\nFor the validity of the argument, [(p ᴠ q) ∧ ((p ᴧ q) → r) ᴧ (q ᴧ ⌐r)] → ⌐p should be a tautology\n\n");
+
     bool p[] = {0, 0, 0, 0, 1, 1, 1, 1};
     bool q[] = {0, 0, 1, 1, 0, 0, 1, 1};
     bool r[] = {0, 1, 0, 1, 0, 1, 0, 1};
 
-    printf("\t\t\t __________________________________________________________________________\n");
-    printf("\t\t\t|   p   |   q   |   r   |   ⌐r  | p ᴠ q  | (p ᴧ q) → r | (q ᴧ ⌐r)  |   ⌐p  |\n");
-    printf("\t\t\t|_______|_______|_______|_______|________|_____________|___________|_______|\n");
+    printf("\t ______________________________________________________________________________________________________________________\n");
+    printf("\t|   p   |   q   |   r   |   ⌐r  | p ᴠ q  | (p ᴧ q) → r | (q ᴧ ⌐r)  |   ⌐p  | [(p ᴠ q) ∧ ((p ᴧ q) → r) ᴧ (q ᴧ ⌐r)] → ⌐p |\n");
+    printf("\t|_______|_______|_______|_______|________|_____________|___________|_______|___________________________________________|\n");
     
-    for (int i = 0; i < 8; i++)
-    {
+    for (int i = 0; i < 8; i++){
         bool a = p[i] || q[i];
         bool b = ifThen((p[i] && q[i]), r[i]);
         bool c = q[i] && !r[i];
         bool d = !p[i];
-
-        printf("\t\t\t|   %d   |   %d   |   %d   |   %d   |    %d   |       %d     |     %d     |   %d   |\n", p[i], q[i], r[i], !r[i], a, b, c, d);
+        bool e = ifThen(a && b && c, d);
+        printf("\t|   %d   |   %d   |   %d   |   %d   |    %d   |       %d     |     %d     |   %d   |                          %d                |\n", p[i], q[i], r[i], !r[i], a, b, c, d, e);
     }
-        printf("\t\t\t|_______|_______|_______|_______|________|_____________|___________|_______|\n");
+    printf("\t|_______|_______|_______|_______|________|_____________|___________|_______|___________________________________________|\n");
+
+    printf("\n\t\tSince, [(p ᴠ q) ∧ ((p ᴧ q) → r) ᴧ (q ᴧ ⌐r)] → ⌐p is a tautology, the argument is valid.\n");
 }

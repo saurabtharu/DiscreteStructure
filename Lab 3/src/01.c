@@ -2,7 +2,6 @@
 Generate truth tables for following compound propositions.
 a. (p ᴧ ⌐q ᴠ r) → (⌐p ᴠ r)
 b. (p ᴧ ⌐q ᴠ r) ↔ (⌐p ᴠ r)
-
 */
 
 

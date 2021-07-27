@@ -11,10 +11,10 @@
 bool ifThen(bool a, bool b){
     if( b == 1)
             return 1;
-        else if( a == 0 )
-            return 1;
-        else
-            return 0;
+    else if( a == 0 )
+        return 1;
+    else
+        return 0;
 }
 int main (){
 
@@ -32,24 +32,26 @@ int main (){
         ⌐q \n\
         -------\n\
         ∴ ⌐p\n\n");
+    printf("\nFor the validity of the argument, [(p → q) ᴧ (⌐q)] → ⌐p should be a tautology\n\n");
 
     bool p[] = {0, 0, 1, 1};
     bool q[] = {0, 1, 0, 1};
 
-    printf("\t\t\t ________________________________________\n");
-    printf("\t\t\t|   p   |   q   | (p → q) | ⌐q  |    ⌐p  |\n");
-    printf("\t\t\t|_______|_______|_________|_____|________|\n");
-    // printf("|   1   |   1   |    1    |  0  |       0      |    0   |\n");
+    printf("\t\t\t ________________________________________________________________\n");
+    printf("\t\t\t|   p   |   q   | (p → q) | ⌐q  |    ⌐p  | [(p → q) ᴧ (⌐q)] → ⌐p |\n");
+    printf("\t\t\t|_______|_______|_________|_____|________|_______________________|\n");
 
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++){
         bool a = ifThen(p[i], q[i]);
         bool b = !q[i];
-        // bool c = a && b;
         bool d = !p[i];
-        printf("\t\t\t|   %d   |   %d   |    %d    |  %d  |    %d   |\n", p[i], q[i], a,b,d);
-    }
-        printf("\t\t\t|_______|_______|_________|_____|________|\n");
 
+        bool e = ifThen(a && b, d);
+        printf("\t\t\t|   %d   |   %d   |    %d    |  %d  |    %d   |          %d            |\n" ,p[i], q[i], a, b, d,e );
+        // printf("\t\t\t|   %d   |   %d   |    %d    |  %d  |    %d   |\n", p[i], q[i], a,b,d);
+    }
+    printf("\t\t\t|_______|_______|_________|_____|________|_______________________|\n");
+
+    printf("\n\t\tSince, [(p → q) ᴧ (⌐q)] → ⌐p is a tautology, the argument is valid.\n");
 
 }

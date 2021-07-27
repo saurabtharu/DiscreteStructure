@@ -10,12 +10,9 @@
 #include<stdbool.h>
 
 bool ifThen(bool a, bool b){
-    if( b == 1)
-            return 1;
-        else if( a == 0 )
-            return 1;
-        else
-            return 0;
+    if( b == 1)             return 1;
+    else if( a == 0 )       return 1;
+    else                    return 0;
 }
 
 int main(){
@@ -30,30 +27,29 @@ int main(){
              q = I will buy new jeans\n\
              r = I will buy a shirt\n");
 
-// ᴠ ᴧ ⌐ → ↔
-
-
     printf("According to argument\n\
          p → q\n\
          q → r\n\
        ---------\n\
         ∴ p → r\n");
-
+    printf("\nFor the validity of the argument, [(p → q) ∧ (q → r)] → (p → r) should be a tautology\n\n");
     
     bool p[] = {0, 0, 0, 0, 1, 1, 1, 1};
     bool q[] = {0, 0, 1, 1, 0, 0, 1, 1};
     bool r[] = {0, 1, 0, 1, 0, 1, 0, 1};
 
-    printf("\t\t\t _______________________________________________\n");
-    printf("\t\t\t|   p   |   q   |   r   | p → q | q → r | p → r |\n");
-    printf("\t\t\t|_______|_______|_______|_______|_______|_______|\n");
+    printf("\t\t\t _______________________________________________________________________________\n");
+    printf("\t\t\t|   p   |   q   |   r   | p → q | q → r | p → r | [(p → q) ∧ (q → r)] → (p → r) |\n");
+    printf("\t\t\t|_______|_______|_______|_______|_______|_______|_______________________________|\n");
 
     for (int i = 0; i < 8; i++)
     {
         bool a = ifThen(p[i], q[i]);
         bool b = ifThen(q[i], r[i]);
         bool c = ifThen(p[i], r[i]);
-        printf("\t\t\t|   %d   |   %d   |   %d   |   %d   |   %d   |   %d   |\n", p[i], q[i], r[i], a, b, c);
+        bool d = ifThen(a && b, c);
+        printf("\t\t\t|   %d   |   %d   |   %d   |   %d   |   %d   |   %d   |             %d                 |\n", p[i], q[i], r[i], a, b, c, d);
     }
-    printf("\t\t\t|_______|_______|_______|_______|_______|_______|\n");
+    printf("\t\t\t|_______|_______|_______|_______|_______|_______|_______________________________|\n");
+    printf("\n\t\tSince, [(p → q) ∧ (q → r)] → (p → r) is a tautology, the argument is valid.\n");
 }
