@@ -14,17 +14,6 @@ int floorValue(float num){
 		return (int)(num-1);
 	}
 }
-int CeilValue(float num){
-	if (num == (int)(num)){
-                return num;
-        }
-	else if(num>=0){
-                return (int)((num/1)+1);
-        }
-        else{
-                return (int)(num);
-        }
-}
 
 int BinarySearch(int  *arr, int l, int r, int query){
 
@@ -32,7 +21,7 @@ int BinarySearch(int  *arr, int l, int r, int query){
     int j = r;
     int location;
 
-    while (i<j)
+    while (i<j) 
     {
         int m = floorValue((i + j) / 2.0);
         if (query > *(arr + m))
@@ -95,6 +84,7 @@ int main(){
         printf("%5d", *(arr + i));
     }
     printf("\n\n");
+abc:
     printf("Enter a number to search: ");
     scanf("%d", &query);
 
@@ -105,5 +95,6 @@ int main(){
     else
         printf("%d is not inside the array.\n",query);
 
+    goto abc;
     printf("\n\n");
 }

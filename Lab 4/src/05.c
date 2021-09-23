@@ -38,6 +38,7 @@ int main(){
     }
     printf("\n");
 
+    abc:
     printf("Enter a number to search: ");
     scanf("%d", &query);
 
@@ -48,5 +49,6 @@ int main(){
     else
         printf("%d is not inside the array.\n",query);
 
+    goto abc;
     printf("\n\n");
 }
